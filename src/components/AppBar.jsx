@@ -560,8 +560,11 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import Typography from "@mui/material/Typography";
 import AdbIcon from "@mui/icons-material/Adb"; 
 import FavoriteIcon from "@mui/icons-material/Favorite"; // ❤️ Wishlist
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"; // 🛒 Cart
 import Badge from "@mui/material/Badge"; // For count
 import { Link } from "react-router-dom";
+import { useWishlist } from "../pages/WishlistContext";
+import { useCart } from "../pages/CartContext";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
@@ -587,7 +590,8 @@ const pages = [
 
 export default function ResponsiveAppBar() {
   const [open, setOpen] = React.useState(false);
-  const [wishlistCount, setWishlistCount] = React.useState(3); // example count
+  const { wishlist } = useWishlist();
+  const { getCartCount } = useCart();
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
@@ -675,8 +679,25 @@ export default function ResponsiveAppBar() {
                 },
               }}
             >
-              <Badge badgeContent={wishlistCount} color="error">
+              <Badge badgeContent={wishlist.length} color="error">
                 <FavoriteIcon sx={{ color: "error.main" }} />
+              </Badge>
+            </IconButton>
+
+            {/* Cart Icon */}
+            <IconButton
+              component={Link}
+              to="/cart"
+              sx={{
+                position: "relative",
+                transition: "transform 0.2s ease",
+                "&:hover": {
+                  transform: "scale(1.2)",
+                },
+              }}
+            >
+              <Badge badgeContent={getCartCount()} color="primary">
+                <ShoppingCartIcon sx={{ color: "primary.main" }} />
               </Badge>
             </IconButton>
 
@@ -761,8 +782,28 @@ export default function ResponsiveAppBar() {
                 >
                   <FavoriteIcon sx={{ color: "error.main" }} /> Wishlist
                   <Badge
-                    badgeContent={wishlistCount}
+                    badgeContent={wishlist.length}
                     color="error"
+                    sx={{ ml: 1 }}
+                  />
+                </MenuItem>
+
+                {/* Cart inside Drawer */}
+                <MenuItem
+                  component={Link}
+                  to="/cart"
+                  onClick={toggleDrawer(false)}
+                  sx={{
+                    fontWeight: 600,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 1,
+                  }}
+                >
+                  <ShoppingCartIcon sx={{ color: "primary.main" }} /> Cart
+                  <Badge
+                    badgeContent={getCartCount()}
+                    color="primary"
                     sx={{ ml: 1 }}
                   />
                 </MenuItem>
