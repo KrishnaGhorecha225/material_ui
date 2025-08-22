@@ -1,0 +1,51 @@
+/* Fullscreen animated background */
+.auth-bg {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url("https://i.pinimg.com/originals/2b/d1/49/2bd149fb1f23cfef32956543d4d6acdf.gif") no-repeat center center/cover;
+  animation: fadeIn 2s ease-in-out;
+}
+
+/* Glassmorphism Card */
+.glass-card {
+  padding: 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  animation: slideUp 1s ease-out;
+}
+
+/* Animated Links */
+.link {
+  color: #4dd0e1;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.link:hover {
+  color: #81d4fa;
+}
+
+/* Animations */
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

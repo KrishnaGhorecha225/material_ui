@@ -423,6 +423,16 @@ const ProductsPage = () => {
 
   const handleAddToCart = (product, e) => {
     e.stopPropagation(); // Prevent navigation
+    
+    // Check if user is logged in
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    
+    if (!currentUser) {
+      setSnackbarMessage("Please login first to add items to cart!");
+      setSnackbarOpen(true);
+      return;
+    }
+    
     addToCart(product);
     setSnackbarMessage("Added to cart!");
     setSnackbarOpen(true);
@@ -472,6 +482,16 @@ const ProductsPage = () => {
                     variant="plain"
                     onClick={(e) => {
                       e.stopPropagation(); // stop navigation
+                      
+                      // Check if user is logged in
+                      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+                      
+                      if (!currentUser) {
+                        setSnackbarMessage("Please login first to add items to wishlist!");
+                        setSnackbarOpen(true);
+                        return;
+                      }
+                      
                       toggleWishlist(product);
                     }}
                     sx={{
