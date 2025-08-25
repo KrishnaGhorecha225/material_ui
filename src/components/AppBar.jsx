@@ -361,21 +361,22 @@ export default function ResponsiveAppBar() {
       setCurrentUser(event.detail);
     };
     
+    // Listen for custom logout event
+    const handleUserLogout = () => {
+      setCurrentUser(null);
+    };
+    
     window.addEventListener('storage', handleStorageChange);
     window.addEventListener('userLogin', handleUserLogin);
+    window.addEventListener('userLogout', handleUserLogout);
     
     return () => {
       window.removeEventListener('storage', handleStorageChange);
       window.removeEventListener('userLogin', handleUserLogin);
+      window.removeEventListener('userLogout', handleUserLogout);
     };
   }, []);
   
-  const handleLogout = () => {
-    localStorage.removeItem("currentUser");
-    setCurrentUser(null);
-    window.location.reload();
-  };
-
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
@@ -563,7 +564,7 @@ export default function ResponsiveAppBar() {
                       <AccountCircleIcon sx={{ mr: 1, color: "primary.main" }} />
                       Profile
                     </MenuItem>
-                    <MenuItem onClick={handleLogout}>
+                    <MenuItem onClick={() => window.dispatchEvent(new CustomEvent('userLogout'))}>
                       <AccountCircleIcon sx={{ mr: 1, color: "primary.main" }} />
                       Logout
                     </MenuItem>

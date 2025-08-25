@@ -1,33 +1,36 @@
+import React from "react";
 import { Routes, Route } from "react-router-dom";
-import ResponsiveAppBar from "./components/AppBar";
-import ProductsPage from "./pages/ProductsPage";
+import AppBar from "./components/AppBar";
 import HomePage from "./pages/HomePage";
+import ProductsPage from "./pages/ProductsPage";
 import ProductDetails from "./pages/ProductDetails";
-import WishlistPage from "./pages/WishlistPage";
 import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import ProfilePage from "./pages/ProfilePage";
+import ChangePasswordPage from "./pages/ChangePasswordPage";
+import OrderHistoryPage from "./pages/OrderHistoryPage";
+import WishlistPage from "./pages/WishlistPage";
 
 function App() {
   return (
-    <>
-      <ResponsiveAppBar />
+    <div className="App">
+      <AppBar />
       <Routes>
-        <Route path="/" element={<HomePage/>} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/product/:id" element={<ProductDetails />} />
-        <Route path="/wishlist" element={<WishlistPage />} />
         <Route path="/cart" element={<CartPage />} />
-        <Route path="/checkout" element={<CheckoutPage/>} />
-        <Route path="/signup" element={<SignUp/>} />
-        <Route path="/signin" element={<SignIn/>} />
+        <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/pricing" element={<h1>Pricing Page</h1>} />
-        <Route path="/blog" element={<h1>Blog Page</h1>} />
+        <Route path="/change-password" element={<ChangePasswordPage />} />
+        <Route path="/orders" element={<OrderHistoryPage />} />
+        <Route path="/wishlist" element={<WishlistPage />} />
       </Routes>
-    </>
+    </div>
   );
 }
 

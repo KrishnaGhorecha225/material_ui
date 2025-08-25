@@ -1,72 +1,72 @@
 // // // SignIn.jsx
-// // import React, { useState } from "react";
-// // import { Box, Button, Checkbox, FormControlLabel, TextField, Typography, Divider } from "@mui/material";
-// // import GoogleIcon from '@mui/icons-material/Google';
-// // import AppleIcon from '@mui/icons-material/Apple';
-// // import FacebookIcon from '@mui/icons-material/Facebook';
+// // // import React, { useState } from "react";
+// // // import { Box, Button, Checkbox, FormControlLabel, TextField, Typography, Divider } from "@mui/material";
+// // // import GoogleIcon from '@mui/icons-material/Google';
+// // // import AppleIcon from '@mui/icons-material/Apple';
+// // // import FacebookIcon from '@mui/icons-material/Facebook';
 
-// // export default function SignIn() {
-// //   const [showPassword, setShowPassword] = useState(false);
+// // // export default function SignIn() {
+// // //   const [showPassword, setShowPassword] = useState(false);
 
-// //   return (
-// //     <Box sx={{ display: "flex", minHeight: "100vh", bgcolor: "#f0f4ff" }}>
-// //       {/* Left Side */}
-// //       <Box sx={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", px: 8 }}>
-// //         <Typography variant="h3" fontWeight="bold" color="#4a6cf7">
-// //           Welcome to our <br /> Community
-// //         </Typography>
-// //         <Typography variant="body1" color="#555" sx={{ mt: 2 }}>
-// //           A whole new productive journey starts right here
-// //         </Typography>
+// // //   return (
+// // //     <Box sx={{ display: "flex", minHeight: "100vh", bgcolor: "#f0f4ff" }}>
+// // //       {/* Left Side */}
+// // //       <Box sx={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", px: 8 }}>
+// // //         <Typography variant="h3" fontWeight="bold" color="#4a6cf7">
+// // //           Welcome to our <br /> Community
+// // //         </Typography>
+// // //         <Typography variant="body1" color="#555" sx={{ mt: 2 }}>
+// // //           A whole new productive journey starts right here
+// // //         </Typography>
         
-// //       </Box>
+// // //       </Box>
 
-// //       {/* Right Side */}
-// //       <Box sx={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", px: 4 }}>
-// //         <Box sx={{ mb: 0 }}>
-// //           <TextField fullWidth label="Enter your email address" variant="outlined" sx={{ mb: 2 }} />
-// //           <TextField
-// //             fullWidth
-// //             label="Password"
-// //             type={showPassword ? "text" : "password"}
-// //             variant="outlined"
-// //             sx={{ mb: 1 }}
-// //           />
-// //           <FormControlLabel
-// //             control={<Checkbox />}
-// //             label="Keep me login"
-// //             sx={{ display: "inline-block", mr: 2 }}
-// //           />
-// //           <Typography component="span" color="#4a6cf7" sx={{ cursor: "pointer" }}>
-// //             Recovery Password
-// //           </Typography>
-// //         </Box>
+// // //       {/* Right Side */}
+// // //       <Box sx={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", px: 4 }}>
+// // //         <Box sx={{ mb: 0 }}>
+// // //           <TextField fullWidth label="Enter your email address" variant="outlined" sx={{ mb: 2 }} />
+// // //           <TextField
+// // //             fullWidth
+// // //             label="Password"
+// // //             type={showPassword ? "text" : "password"}
+// // //             variant="outlined"
+// // //             sx={{ mb: 1 }}
+// // //           />
+// // //           <FormControlLabel
+// // //             control={<Checkbox />}
+// // //             label="Keep me login"
+// // //             sx={{ display: "inline-block", mr: 2 }}
+// // //           />
+// // //           <Typography component="span" color="#4a6cf7" sx={{ cursor: "pointer" }}>
+// // //             Recovery Password
+// // //           </Typography>
+// // //         </Box>
 
-// //         <Button variant="contained" fullWidth sx={{ mb: 2, py: 1.5, bgcolor: "#4a6cf7" }}>
-// //           SIGN IN
-// //         </Button>
+// // //         <Button variant="contained" fullWidth sx={{ mb: 2, py: 1.5, bgcolor: "#4a6cf7" }}>
+// // //           SIGN IN
+// // //         </Button>
 
-// //         <Divider sx={{ my: 2 }}>or continue with</Divider>
+// // //         <Divider sx={{ my: 2 }}>or continue with</Divider>
 
-// //         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-// //           <Button variant="outlined" startIcon={<GoogleIcon />} sx={{ flex: 1, mr: 1 }}>
-// //             Google
-// //           </Button>
-// //           <Button variant="outlined" startIcon={<AppleIcon />} sx={{ flex: 1, mx: 1 }}>
-// //             Apple
-// //           </Button>
-// //           <Button variant="outlined" startIcon={<FacebookIcon />} sx={{ flex: 1, ml: 1 }}>
-// //             Facebook
-// //           </Button>
-// //         </Box>
+// // //         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+// // //           <Button variant="outlined" startIcon={<GoogleIcon />} sx={{ flex: 1, mr: 1 }}>
+// // //             Google
+// // //           </Button>
+// // //           <Button variant="outlined" startIcon={<AppleIcon />} sx={{ flex: 1, mx: 1 }}>
+// // //             Apple
+// // //           </Button>
+// // //           <Button variant="outlined" startIcon={<FacebookIcon />} sx={{ flex: 1, ml: 1 }}>
+// // //             Facebook
+// // //           </Button>
+// // //         </Box>
 
-// //         <Typography variant="body2" align="center" sx={{ mt: 4 }}>
-// //           Don't have an account? <span style={{ color: "#4a6cf7", cursor: "pointer" }}>Register</span>
-// //         </Typography>
-// //       </Box>
-// //     </Box>
-// //   );
-// // }
+// // //         <Typography variant="body2" align="center" sx={{ mt: 4 }}>
+// // //           Don't have an account? <span style={{ color: "#4a6cf7", cursor: "pointer" }}>Register</span>
+// // //         </Typography>
+// // //       </Box>
+// // //     </Box>
+// // //   );
+// // // }
 
 
 // import React, { useState } from "react";
@@ -172,17 +172,35 @@ function SignIn() {
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
+    if (!email || !password) {
+      alert("Please fill all fields!");
+      return;
+    }
+
     const users = JSON.parse(localStorage.getItem("users")) || [];
+    console.log("All users in localStorage:", users);
+    console.log("Attempting login with:", { email, password });
+    
     const user = users.find(u => u.email === email && u.password === password);
 
     if (user) {
-      localStorage.setItem("currentUser", JSON.stringify({ name: user.name, email: user.email }));
+      // Save current user data
+      const currentUser = { name: user.name, email: user.email };
+      localStorage.setItem("currentUser", JSON.stringify(currentUser));
+      
       // Dispatch custom event to notify AppBar about login
-      window.dispatchEvent(new CustomEvent('userLogin', { detail: { name: user.name, email: user.email } }));
+      window.dispatchEvent(new CustomEvent('userLogin', { detail: currentUser }));
+      
       alert("Login successful!");
       navigate("/"); // redirect to home page
     } else {
-      alert("Invalid credentials!");
+      // Check if user exists but password is wrong
+      const userExists = users.find(u => u.email === email);
+      if (userExists) {
+        alert("Invalid password! Please check your password.");
+      } else {
+        alert("User not found! Please register first.");
+      }
     }
   };
 
@@ -231,6 +249,19 @@ function SignIn() {
               onClick={handleLogin}
             >
               Login
+            </Button>
+            <Button
+              fullWidth
+              variant="outlined"
+              color="secondary"
+              sx={{ mt: 1, borderRadius: "25px" }}
+              onClick={() => {
+                const users = JSON.parse(localStorage.getItem("users")) || [];
+                console.log("Debug: All users in localStorage:", users);
+                alert(`Found ${users.length} users in localStorage. Check console for details.`);
+              }}
+            >
+              Debug Users
             </Button>
             <Typography variant="body2" align="center" sx={{ mt: 2 , color: 'text.secondary' }}>
               Don’t have an account?{" "}

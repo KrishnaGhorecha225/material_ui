@@ -233,19 +233,43 @@ import "./auth.css";
 
 function SignUp() {
   const navigate = useNavigate();
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleRegister = () => {
+    if (!name || !email || !password) {
+      alert("Please fill all fields!");
+      return;
+    }
+    
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
 
-    const user = { email, password };
-    localStorage.setItem("user", JSON.stringify(user));
-    alert("Registration successful!");
+    // Check if user already exists
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const existingUser = users.find(u => u.email === email);
+    
+    if (existingUser) {
+      alert("User with this email already exists!");
+      return;
+    }
+
+    // Create new user with name field
+    const newUser = { 
+      name, 
+      email, 
+      password 
+    };
+    
+    // Add to users array
+    users.push(newUser);
+    localStorage.setItem("users", JSON.stringify(users));
+    
+    alert("Registration successful! Please login.");
     navigate("/signin");
   };
 
@@ -257,6 +281,13 @@ function SignUp() {
             Register
           </Typography>
           <Box component="form">
+            <TextField
+              margin="normal"
+              fullWidth
+              label="Your Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
             <TextField
               margin="normal"
               fullWidth
